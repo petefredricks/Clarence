@@ -15,7 +15,6 @@ module.exports = function( grunt ) {
 
 				files: {
 					'public/<%= pkg.version %>/js/app.js': [
-						'public/js/lib/angular-file-upload-html5-shim.min.js',
 						'public/js/lib/angular-file-upload.min.js',
 						'public/js/lib/ui-bootstrap-tpls-0.7.0.js',
 						'public/js/app/services.js',

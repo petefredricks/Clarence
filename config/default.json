@@ -8,16 +8,18 @@
 		"optimized": false,
 		"resourceRoot": "",
 		"cookieSecret": "signed cookie",
-		"sessionSecret": "signed session"
+		"sessionSecret": "signed session",
+		"logo": "http://www.geeknewscentral.com/wp-content/uploads/2010/04/dtv_3d_directv_white.jpg"
 	},
 	"credentials":{
 		"username": "admin",
-		"password": "password"
+		"password": "GotVideos!"
 	},
 	"rackspace": {
 		"container": "mediatool-prod",
 		"username": "janicekmedia",
 		"apiKey": "e477056b72c34de5912e1ac799db218e",
-		"region":	"IAD"
+		"region":	"IAD",
+		"videoFolder": "assets/test/"
 	}
 }

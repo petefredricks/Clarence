@@ -1,4 +1,4 @@
-var fs = require( 'fs' );
+var nconf = require( 'nconf' );
 var app = require( '../app' );
 var _ = require( 'underscore' );
 var formidable = require('formidable');
@@ -13,7 +13,7 @@ app.use( function( req, res ) {
 	res.status( 400 );
 	res.render( 'error/404.jade', {
 		title: '404: Page Not Found',
-		paths: assets.getPaths( req, 'error' )
+		paths: assets.getPaths( req, 'app' )
 	});
 });
 
@@ -23,7 +23,7 @@ app.use( function( error, req, res ) {
 	res.render( 'error/500.jade', {
 		title: '500: Internal Server Error',
 		error: error,
-		paths: assets.getPaths( req, 'error' )
+		paths: assets.getPaths( req, 'app' )
 	});
 });
 
@@ -32,7 +32,8 @@ function indexAction( req, res ) {
 
 	res.render( 'pages/index', {
 		title: 'BringSides',
-		paths: assets.getPaths( req, 'app' )
+		paths: assets.getPaths( req, 'app' ),
+		logo:nconf.get( 'app:logo' )
 	});
 }
 
@@ -42,40 +43,43 @@ var indexRoutes = [
 ];
 
 _.each( indexRoutes, function( route ) {
-	app.get( route, indexAction );
+	app.get( route, auth, indexAction );
 });
 
-app.get( '/files', function( req, res ) {
+app.get( '/videos', auth, function( req, res ) {
+	rackspace.listVideos( function( err, files ) {
+		res.json( files );
+	})
+});
 
-//	rackspace.deleteFile( "assets/test/video.mp4", function() {
-		rackspace.listFiles( function( err, files ) {
-			res.json( files );
-		})
-//	})
-
-})
-
-app.post('/upload', function( req, res ) {
+app.post( '/upload', auth, function( req, res ) {
 
 	var form = new formidable.IncomingForm();
 
 	form.onPart = function( part ) {
 
 		if ( !part.filename ) {
+
 			// let formidable handle all non-file parts
-//			form.handlePart( part );
+			form.handlePart( part );
 		}
 		else {
-			part.pipe( rackspace.createUpload( part.filename, function( err, result ) {
-				console.log( err, result )
-			}))
 
-			part.on( 'data', function() {
-				console.log( 'data' );
-			})
+			var start = Date.now();
+
+			var writeStream = rackspace.createUpload( part.filename, function( err, result ) {
+				var seconds = ( Date.now() - start ) / 1000;
+				console.log( err || 'Rackspace Upload Successful %ss', seconds.toFixed(2) );
+			});
+
+			part.pipe( writeStream );
 		}
 	};
 
+//	form.on( 'progress', function( received, expected ) {
+//		console.log( (received/expected).toFixed(2) );
+//	});
+
 	form.parse( req );
-	res.send( 'OK!' );
+	res.send( 'End' );
 });

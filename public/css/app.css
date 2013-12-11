@@ -1,0 +1,33 @@
+#upload-box {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 0 30px rgba(0,0,0,0.2);
+  box-shadow: 0 0 30px rgba(0,0,0,0.2);
+  margin: 0 auto 0;
+  padding: 15px 30px 40px;
+  width: 700px;
+}
+#upload-box h2 {
+  margin-bottom: 20px;
+}
+#upload-box span {
+  font-size: 18px;
+}
+#upload-box input[type="file"] {
+  display: inline;
+  margin-left: 10px;
+}
+#upload-box .progress {
+  margin-top: 30px;
+}
+#upload-box .status {
+  font-size: 30px;
+  text-align: center;
+}
+#logo {
+  padding: 40px;
+  text-align: center;
+}
+#logo img {
+  height: 100px;
+}
