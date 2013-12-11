@@ -1,0 +1,23 @@
+{
+	"server": {
+		"host": "localhost",
+		"port": "3000",
+		"setWorkers": 1
+	},
+	"app": {
+		"optimized": false,
+		"resourceRoot": "",
+		"cookieSecret": "signed cookie",
+		"sessionSecret": "signed session"
+	},
+	"credentials":{
+		"username": "admin",
+		"password": "password"
+	},
+	"rackspace": {
+		"container": "mediatool-prod",
+		"username": "janicekmedia",
+		"apiKey": "e477056b72c34de5912e1ac799db218e",
+		"region":	"IAD"
+	}
+}

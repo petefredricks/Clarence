@@ -1,0 +1,13 @@
+extends ../layouts/main
+
+block content
+
+	#ng-app(ng-app="uploader", ng-controller="AppCtrl")
+
+		div(ng-controller="UploadCtrl")
+
+			input(type='file', ng-file-select='onFileSelect($files)')
+			input(type='file', ng-file-select='onFileSelect($files)', multiple='multiple')
+			div(ng-file-drop='onFileSelect($files)', ng-file-drag-over-class='optional-css-class', ng-show='dropSupported') drop files here
+			div(ng-file-drop-available='dropSupported=true', ng-show='!dropSupported') HTML5 Drop File is not supported!
+			button(ng-click='upload.abort()') Cancel Upload

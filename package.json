@@ -1,0 +1,25 @@
+{
+	"name": "Clarence",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"start": "node app.js"
+	},
+	"dependencies": {
+		"async": "0.2.x",
+		"underscore": "*",
+		"express": "3.4.x",
+		"jade": "*",
+		"stylus": "*",
+		"nib": "*",
+		"nconf": "0.6.x",
+		"grunt": "0.4.x",
+		"pkgcloud": "0.8.x",
+		"formidable": "1.0.x"
+	},
+	"devDependencies": {
+		"grunt-contrib-uglify": "0.2.x",
+		"grunt-cssjoin": "0.2.x",
+		"grunt-contrib-copy": "0.4.x"
+	}
+}

@@ -1,0 +1,32 @@
+-pos(type, args)
+	i = 0
+	position: unquote(type)
+	if args[i]
+		{args[i]}: args[i + 1] is a 'unit' ? args[i += 1] : 0
+	if args[i + 1]
+		{args[i += 1]}: args[i + 1] is a 'unit' ? args[i += 1] : 0
+	if args[i + 1]
+		{args[i += 1]}: args[i + 1] is a 'unit' ? args[i += 1] : 0
+	if args[i + 1]
+		{args[i += 1]}: args[i + 1] is a 'unit' ? args[i += 1] : 0
+
+-opposite(dir)
+	if dir == left
+		return right
+	if dir == right
+		return left
+	if dir == top
+		return bottom
+	if dir == bottom
+		return top
+
+font-face(fontName, fontFileName){
+	font-family: fontName;
+	src: url('../font/'+fontFileName+'.eot');
+	src: url('../font/'+fontFileName+'.eot?#iefix')format('embedded-opentype'),
+	url('../font/'+fontFileName+'.ttf') format('truetype');
+	//url('../font/'+fontFileName+'.svg#'+fontName) format('svg');
+	font-weight:  normal;
+	font-style:   normal;
+	font-variant: normal;
+}

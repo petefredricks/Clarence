@@ -1,0 +1,7 @@
+# ignore files
+
+/public/*
+/stylus/*
+/views/*
+/.git/*
+/.idea/*
